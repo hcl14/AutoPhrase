@@ -25,7 +25,7 @@ All the preparations of temporary files are very inefficient and done in bash wh
 `wc -l` shows different length of `case_tokenized_train.txt` and `raw_tokenized_train.txt`, this might lead to errors, don't know why it is so at the moment. You may want to just check `tokenize_raw.sh` to understand what's going on and what files are prepared, and write your own less costy implementation in, say, Python.<br>
 
 
-You can run it with toy dataset (will be automatically downloaded):
+You can run it with toy dataset (will be automatically downloaded). **Output resides in `models/DBLP/*.txt`.**
 
 ```
 ~/AutoPhrase(master)$ bash auto_phrase_stanford.sh data/DBLP.txt 
