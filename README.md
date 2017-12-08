@@ -2,6 +2,8 @@
 
 -------
 
+Working file `bash auto_phrase_stanford.sh <path to txtfile with data>`. <br>
+
 
 My attempt to change unstable POS tagger to stanford [AutoPhrase](https://github.com/shangjingbo1226/AutoPhrase).<br>
 

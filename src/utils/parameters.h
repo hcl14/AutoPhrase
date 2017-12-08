@@ -4,7 +4,7 @@
 #include "../utils/utils.h"
 
 // [NOTE!!] If you have a really large input, please uncomment the following define.
-// #define LARGE
+#define LARGE
 
 #ifdef LARGE
     typedef long long TOTAL_TOKENS_TYPE;
