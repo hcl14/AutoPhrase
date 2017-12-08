@@ -19,6 +19,11 @@ Please download [full Stanford POS tagger with English model](https://nlp.stanfo
 STANFORD_POS_TAGGER_PATH="/home/hcl/Documents/work/keyword-algorithms/stanford-corenlp-full-2017-06-09/stanford-postagger-full-2017-06-09"
 
 ```
+It takes much longer to process, for 2GB corpus:
+```
+Tagged 459209610 words at 111480.29 words per second.
+Pos tagging took 68 minutes and 40 seconds
+```
 
 All the preparations of temporary files are very inefficient and done in bash which involves creation of meny copies of the data. My goal was to show it's working.<br>
 
@@ -108,6 +113,14 @@ Check output:<br>
 0.9629881396    bundle adjustment
 0.9629262437    shallow water
 ```
+
+Notice the "Untokenized" error. ASCII convertion still lefts intect some Unicode characters like `U+0008` or `U+0014`, and Stanford tagger complains about them. Stanford allows skipping those characters or turning into a separate tags, but, I quess either way might shift the POS tags sequence compared to tokenized text, depending on whether bad character is a part of the word or not. Therefore, for simplicity, I've chosen to create `raw_tokenized_train.txt` from the data already filtered by Stanford Tokenizer, i.e. create both `raw_tokenized_train.txt` and `pos_tags_tokenized_train.txt` and all other files from its output `text.tag`. POS tag sequence and tokenized text must be exactly equal in length now.
+
+To read about the Stanford POS tagger options:
+[https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/tagger/maxent/MaxentTagger.html](https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/tagger/maxent/MaxentTagger.html)
+[https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/process/PTBTokenizer.html](https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/process/PTBTokenizer.html)
+
+See also comments in `tokenize_raw.sh`.
 
 -------
 
