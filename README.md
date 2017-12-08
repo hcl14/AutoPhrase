@@ -94,6 +94,21 @@ sys     0m26.896s
 ~/AutoPhrase(master)$
 ```
 
+Check output:<br>
+```
+~/AutoPhrase(master)$ head -10 models/DBLP/AutoPhrase_multi-words.txt
+0.9648292369    turbo equalization
+0.9647017177    public-key cryptosystem
+0.9644216993    boolean satisfiability
+0.9638165369    kalman filters
+0.9636082266    epipolar geometry
+0.9635261410    mit press
+0.9633463643    ultra wideband
+0.9633258258    maximum entropy
+0.9629881396    bundle adjustment
+0.9629262437    shallow water
+```
+
 -------
 
 
