@@ -3,7 +3,7 @@
 -------
 
 
-My attempt to change unstable POS tagger to stanford [AutoPhrase](https://github.com/shangjingbo1226/AutoPhrase).<br>
+My attempt to change unstable POS tagger to Stanford for [AutoPhrase](https://github.com/shangjingbo1226/AutoPhrase).<br>
 
 Currently only English is supported.<br>
 
