@@ -38,6 +38,9 @@ if [ $RAW_TRAIN == "data/DBLP.txt" ] && [ ! -e data/DBLP.txt ]; then
     echo ${green}===Downloading Toy Dataset===${reset}
     curl http://dmserv2.cs.illinois.edu/data/DBLP.txt.gz --output data/DBLP.txt.gz
     gzip -d data/DBLP.txt.gz -f
+    iconv -f UTF8 -t ASCII//TRANSLIT data/DBLP.txt > data/DBLP_ascii.txt
+    rm data/DBLP.txt
+    mv data/DBLP_ascii.txt data/DBLP.txt
 fi
 
 ### END Compilation###
