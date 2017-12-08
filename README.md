@@ -2,12 +2,6 @@
 
 -------
 
-Working file `bash auto_phrase_stanford.sh <path to txtfile with data>`. <br>
-Please confert your source English text to ASCII first:<br>
-```
-iconv -f UTF8 -t ASCII//TRANSLIT input_txt > input_ascii.txt
-```
-
 
 My attempt to change unstable POS tagger to stanford [AutoPhrase](https://github.com/shangjingbo1226/AutoPhrase).<br>
 
@@ -24,6 +18,13 @@ It takes much longer to process, for 2GB corpus:
 Tagged 459209610 words at 111480.29 words per second.
 Pos tagging took 68 minutes and 40 seconds
 ```
+
+Working file `bash auto_phrase_stanford.sh <path to txtfile with data>`. <br>
+Please convert your source English text to ASCII first:<br>
+```
+iconv -f UTF8 -t ASCII//TRANSLIT input_txt > input_ascii.txt
+```
+
 
 All the preparations of temporary files are very inefficient and done in bash which involves creation of many copies of the data. My goal was to show it's working.<br>
 
