@@ -25,7 +25,7 @@ Tagged 459209610 words at 111480.29 words per second.
 Pos tagging took 68 minutes and 40 seconds
 ```
 
-All the preparations of temporary files are very inefficient and done in bash which involves creation of meny copies of the data. My goal was to show it's working.<br>
+All the preparations of temporary files are very inefficient and done in bash which involves creation of many copies of the data. My goal was to show it's working.<br>
 
 `wc -l` shows different length of `case_tokenized_train.txt` and `raw_tokenized_train.txt`, this might lead to errors, don't know why it is so at the moment. You may want to just check `tokenize_raw.sh` to understand what's going on and what files are prepared, and write your own less costy implementation in, say, Python.<br>
 
@@ -114,7 +114,7 @@ Check output:<br>
 0.9629262437    shallow water
 ```
 
-Notice the "Untokenized" error. ASCII convertion still lefts intect some Unicode characters like `U+0008` or `U+0014`, and Stanford tagger complains about them. Stanford allows skipping those characters or turning into a separate tags, but, I quess either way might shift the POS tags sequence compared to tokenized text, depending on whether bad character is a part of the word or not. Therefore, for simplicity, I've chosen to create `raw_tokenized_train.txt` from the data already filtered by Stanford Tokenizer, i.e. create both `raw_tokenized_train.txt` and `pos_tags_tokenized_train.txt` and all other files from its output `text.tag`. POS tag sequence and tokenized text must be exactly equal in length now.
+Notice the "Untokenized" error. ASCII convertion still lefts intact some Unicode characters like `U+0008` or `U+0014`, and Stanford tagger complains about them (the same was with old tokenizer).  Stanford allows skipping those characters or turning into a separate tags, but, I quess either way might shift the POS tags sequence compared to tokenized text, depending on whether bad character is a part of the word or not (perhaps that was the source of errors?). Therefore, for simplicity, I've chosen to create `raw_tokenized_train.txt` from the data already filtered by Stanford Tokenizer, i.e. create both `raw_tokenized_train.txt` and `pos_tags_tokenized_train.txt` and all other files from its output `text.tag`. POS tag sequence and tokenized text must be exactly equal in length now regardless of what `wc -w` says.
 
 To read about the Stanford POS tagger options:
 [https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/tagger/maxent/MaxentTagger.html](https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/tagger/maxent/MaxentTagger.html)
