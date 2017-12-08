@@ -3,6 +3,10 @@
 -------
 
 Working file `bash auto_phrase_stanford.sh <path to txtfile with data>`. <br>
+Please confert your source English text to ASCII first:<br>
+```
+iconv -f UTF8 -t ASCII//TRANSLIT input_txt > input_ascii.txt
+```
 
 
 My attempt to change unstable POS tagger to stanford [AutoPhrase](https://github.com/shangjingbo1226/AutoPhrase).<br>
