@@ -25,6 +25,75 @@ All the preparations of temporary files are very inefficient and done in bash wh
 `wc -l` shows different length of `case_tokenized_train.txt` and `raw_tokenized_train.txt`, this might lead to errors, don't know why it is so at the moment. You may want to just check `tokenize_raw.sh` to understand what's going on and what files are prepared, and write your own less costy implementation in, say, Python.<br>
 
 
+You can run it with toy dataset (will be automatically downloaded):
+
+```
+~/AutoPhrase(master)$ bash auto_phrase_stanford.sh data/DBLP.txt 
+===Compilation===
+mkdir -p bin
+g++ -std=c++11 -Wall -O3 -msse2  -fopenmp  -I.. -pthread -lm -Wno-unused-result -Wno-sign-compare -Wno-unused-variable -Wno-parentheses -Wno-format -o bin/segphrase_train src/main.cpp
+g++ -std=c++11 -Wall -O3 -msse2  -fopenmp  -I.. -pthread -lm -Wno-unused-result -Wno-sign-compare -Wno-unused-variable -Wno-parentheses -Wno-format -o bin/segphrase_segment src/segment.cpp
+===Downloading Toy Dataset===
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  198M  100  198M    0     0  30.7M      0  0:00:06  0:00:06 --:--:-- 35.4M
+===Tokenization===
+Detected Language: EN
+POS tagging...
+Loading default properties from tagger stanford-postagger-full-2017-06-09/models/english-left3words-distsim.tagger
+Loading POS tagger from stanford-postagger-full-2017-06-09/models/english-left3words-distsim.tagger ... done [0.7 sec].
+Untokenizable: (U+1B, decimal: 27)
+Tagged 105730210 words at 110827.50 words per second.
+Pos tagging took 15 minutes and 56 seconds
+Preparing cleaned text...
+Constructing case_tokenized_train.txt...
+Constructing raw_tokenized_train.txt
+Constructing token conversion table
+Constructing pos_tags_tokenized_train.txt
+Constructing tokenized_train.txt
+Tokenizing stopwords
+Tokenizing Wikipedia
+No provided expert labels.
+===AutoPhrasing===
+=== Current Settings ===
+Iterations = 2
+Minimum Support Threshold = 10
+Maximum Length Threshold = 6
+POS-Tagging Mode Enabled
+Number of threads = 10
+Labeling Method = DPDN
+        Auto labels from knowledge bases
+        Max Positive Samples = -1
+=======
+Loading data...
+# of total tokens = 105730210
+max word token id = 869811
+# of documents = 5499432
+# of distinct POS tags = 45
+Mining frequent phrases...
+selected MAGIC = 869819
+# of frequent phrases = 2029025
+Extracting features...
+Constructing label pools...
+        The size of the positive pool = 31712
+        The size of the negative pool = 1991159
+# truth patterns = 200386
+Estimating Phrase Quality...
+Segmenting...
+Rectifying features...
+Estimating Phrase Quality...
+Segmenting...
+Dumping results...
+Done.
+
+real    15m13.802s
+user    78m29.288s
+sys     0m26.896s
+===Saving Model and Results===
+===Generating Output===
+~/AutoPhrase(master)$
+```
+
 -------
 
 
