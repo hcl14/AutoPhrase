@@ -1,3 +1,27 @@
+# AutoPhrase + Stanford POS Tagger
+
+-------
+
+
+My attempt to change unstable POS tagger to stanford [AutoPhrase](https://github.com/shangjingbo1226/AutoPhrase).<br>
+
+Currently only English is supported.<br>
+
+Please download [full Stanford POS tagger with English model](https://nlp.stanford.edu/software/tagger.shtml) and provide path in `tokenize_raw.sh`:<br>
+
+```
+STANFORD_POS_TAGGER_PATH="/home/hcl/Documents/work/keyword-algorithms/stanford-corenlp-full-2017-06-09/stanford-postagger-full-2017-06-09"
+
+```
+
+All the preparations of temporary files are very inefficient and done in bash which involves creation of meny copies of the data. My goal was to show it's working.<br>
+
+`wc -l` shows different length of `case_tokenized_train.txt` and `raw_tokenized_train.txt`, this might lead to errors, don't know why it is so at the moment. You may want to just check `tokenize_raw.sh` to understand what's going on and what files are prepared, and write your own less costy implementation in, say, Python.<br>
+
+
+-------
+
+
 # AutoPhrase: Automated Phrase Mining from Massive Text Corpora
 
 ## Publications
